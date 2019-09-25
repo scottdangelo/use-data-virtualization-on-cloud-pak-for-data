@@ -211,11 +211,92 @@ The new connection will be listed in the overview.
 
 ![Connection has been added!](images/conn-3-overview-db2.png)
 
-## 2. Assign virtualized data
+## Virtualize Db2 data with Data Virtualization
 
-> **IMPORTANT**: A note to the instructors of this tutorial. At this point go to the [Admin Guide](images/gcadmin-guide/README.md#virtualize-db2-data-with-data-virtualization) and follow the `Virtualize Db2 data with Data Virtualization` section.
+> **NOTE**: This section requires `Admin` user access to the Cloud Pak for Data cluster.
 
 For this section we'll now use the Data Virtualization tool to import the data from Db2 Warehouse, which is now exposed as an Connection in Cloud Pak for Data.
+
+### Add a Data Source to Data Virtualization
+
+To launch the data virtualization tool, go the (☰) menu and click *Collect* and then *Virtualized data*.
+
+![(☰) Menu -> Collect -> Virtualized data](images/cpd-dv-menu.png)
+
+At the empty overview, click *Add* and choose *Add remote connector*.
+
+![No data sources, yet](images/dv-data-sources-1-empty.png)
+
+Select the data source we made in the previous step, and click *Next*.
+
+![Add the Db2 Warehouse connection](images/dv-data-sources-2-add.png)
+
+The new connection will be listed as a data source for data virtualization.
+
+![Db2 Warehouse connection is now associated with Data Virtualization](images/dv-data-sources-3-shown.png)
+
+### Start virtualizing data
+
+In this section, since we now have access to the Db2 Warehouse data, we can virtualize the data to our Cloud Pak for Data project. Click on the *Menu* button and choose *Virtualize*.
+
+![Menu -> Virtualize](images/dv-virtualize-1-menu.png)
+
+Several tables will appear (many are created as sample data when a Db2 Warehouse instance is provisioned) in the table. Find the tables you created earlier, the instructions suggested naming them: `CUSTOMER`, `PRODUCT` and `BILLING`. Once selected click on *Add to cart* and then on *View Cart*.
+
+![Choose the tables to virtualize](images/dv-virtualize-2-tables.png)
+
+The next panel prompts the user to choose which project to assign the data to, choose the project you created in the previous exercise. Click *Virtualize* to start the process.
+
+![Add virtualized data to your project](images/dv-virtualize-3-assign.png)
+
+You'll be notified that the virtual tables have been created! Let's see the new virtualized data from the Data Virtualization tool by clicking *View my data*.
+
+![Ta da! We've got virtualized data](images/dv-virtualize-4-complete.png)
+
+### Join the virtualized data
+
+Now we're going to **join** the tables we created so we have a merged set of data. It will be easier to do it here rather than in a notebook where we'd have to write code to handle three different data sets. Click on any two tables (`PRODUCTS` and `BILLING` for instance) and click the *Join view* button.
+
+![Choose to join two tables](images/dv-data-join-1-overview.png)
+
+To join the tables we need to pick a key that is common to both data sets. Here we choose to map `customerID` from the first table to `customerID` on the second table. Do this by clicking on one and dragging it to another. When the line is drawn click on *Join*.
+
+![Map the two customerID keys](images/dv-data-join-2-columns.png)
+
+In the next panel we'll give our joined data a name, I chose `billing+products`, then review the joined table to ensure all columns are present and only one `customerID` column exists. Click *Next* to continue.
+
+![Review the proposed joined table](images/dv-data-join-3-review.png)
+
+Next we choose which project to assign the joined view to, choose the project you created in the previous exercise. Click *Create view* to start the process.
+
+![Add joined data tables to your project](images/dv-data-join-4-assign.png)
+
+You'll be notified that the join has succeeded! Click on *View my data*. to repeat this again so we have all three tables.
+
+![The data join succeeded!](images/dv-data-join-5-created.png)
+
+**IMPORTANT** Repeat the same steps as above, but this time choose to join the new joined view (`billing+products`) and the last virtualized table (`CUSTOMERS`), to create a new joined view that has all three tables, let's call it `billing+products+customers`. Switching to our project should show all three virtualized tables, and two joined tables. Do not go to the next section until this step is performed.
+
+![Our data sets at the end of this section](images/dv-project-data-all.png)
+
+### Assign the "Steward" role to the attendees
+
+Go to *Data Virtualization* option from the menu. Click on *Manage users*
+
+![Manage users in Data Virtualization](images/dv-6-manage-users.png)
+
+Click on *Add user* and ensure all users have the *Steward* role.
+
+![Manage users in Data Virtualization](images/dv-7-steward-role.png)
+
+## Adding users to the cluster
+
+From the hamburger menu, click manage users, then add user!
+
+![Add a user](images/manage-add-users.png)
+For this section we'll now use the Data Virtualization tool to import the data from Db2 Warehouse, which is now exposed as an Connection in Cloud Pak for Data.
+
+## 2. Assign virtualized data
 
 ### Assign the data to your project
 
