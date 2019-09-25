@@ -63,7 +63,7 @@ wget https://raw.githubusercontent.com/IBM/virtualizing-db2-warehouse-data-with-
 
 Alternatively, go to the [GitHub repo for this tutorial](https://github.com/IBM/virtualizing-db2-warehouse-data-with-data-virtualization) and download the archived version of the tutorial and extract it on your laptop.
 
-![download tutorial zip](./DownloadDataVisualization.png)
+![download tutorial zip](images/DownloadDataVisualization.png)
 
 ## 2. About the data set
 
@@ -111,61 +111,61 @@ We'll need a place to store our data. For this tutorial we've opted to use Db2 W
 
 Log into (or sign up for) [IBM Cloud](https://cloud.ibm.com).
 
-![IBM Cloud login](./ibm-cloud-sign-up.png)
+![IBM Cloud login](images/gcibm-cloud-sign-up.png)
 
 From the dashboard click on the *Create resource* button to go to the *Catalog*.
 
-![IBM Cloud Dashboard](./ibm-cloud-dashboard.png)
+![IBM Cloud Dashboard](images/gcibm-cloud-dashboard.png)
 
 Find the [Db2 Warehouse](https://cloud.ibm.com/catalog/services/db2-warehouse) tile from the *Database* section.
 
-![Db2 Warehouse in the Catalog](./db2-0-catalog.png)
+![Db2 Warehouse in the Catalog](images/gcdb2-0-catalog.png)
 
 Choose the `Entry` plan as it is compatible with a `Lite` account.
 
 > **NOTE**: There may be a message indicating the service will be charged, please disregard that message as there is no charge for staying under 1 GB of data.
 
-![Entry level plan](./db2-0-pricing.png)
+![Entry level plan](images/gcdb2-0-pricing.png)
 
 Once the Db2 Warehouse service is created click on *Open Console*.
 
-![A Db2 Warehouse instance has been provisioned](./db2-1-cloud-launch.png)
+![A Db2 Warehouse instance has been provisioned](images/gcdb2-1-cloud-launch.png)
 
 You'll be directed to a Db2 web console dashboard where you can load data by clicking the *Load* button.
 
 ### Load the Db2 Warehouse database
 
-![The Db2 Warehouse console](./db2-2-console-overview.png)
+![The Db2 Warehouse console](images/gcdb2-2-console-overview.png)
 
 Select the `billing.csv` file.
 
-![Find data to load](./db2-3-csv-find.png)
+![Find data to load](images/gcdb2-3-csv-find.png)
 
 On the next panel we configure where the data will go in the database. We'll use the schema that was created for our database, it'll look like *DASHXXXX* where *XXXX* is a randomly generated number. Select that and click `+ New Table` and give it the name `Billing` to create a new table.
 
-![Select a table name](./db2-4-csv-config.png)
+![Select a table name](images/gcdb2-4-csv-config.png)
 
 Accept the defaults on the next screen and click `Next`.
 
-![Keep all defaults](./db2-keep-defaults.png)
+![Keep all defaults](images/gcdb2-keep-defaults.png)
 
 On the next panel click *Begin Load* to start loading the data.
 
-![Begin loading the data](./db2-5-csv-preload.png)
+![Begin loading the data](images/gcdb2-5-csv-preload.png)
 
 Verify all the rows were loaded. Click `Load More Data` to continue.
 
-![Data has been loaded!](./db2-6-csv-loaded.png)
+![Data has been loaded!](images/gcdb2-6-csv-loaded.png)
 
 Repeat the process for `products.csv` and `customer-service.csv`, call these tables `PRODUCTS` and `CUSTOMERS`. Note that there will be an additional panel to configure data, the defaults are accetable.
 
-![Repeat the process for the other data sets](./db2-8-csv-config-products.png)
+![Repeat the process for the other data sets](images/gcdb2-8-csv-config-products.png)
 
 ### Jot down the credentials
 
 Before we go to Cloud Pak for Data, we need to create credentials for our Db2 Warehouse by going back to our service, clicking on the *Service credentials* button, and creating a new credential. Copy these down somewhere as we'll need them in the next section.
 
-![Db2 Warehouse credentials](./db2-cloud-credentials.png)
+![Db2 Warehouse credentials](images/gcdb2-cloud-credentials.png)
 
 ## 4. Creating a new Cloud Pak for Data project
 
@@ -175,44 +175,44 @@ At this point of the tutorial we will be using Cloud Pak for Data for the remain
 
 Launch a browser and naviate to your Cloud Pak for Data deployment
 
-![Cloud Pak for Data login](../.gitbook/assets/images/manage/cpd-login.png)
+![Cloud Pak for Data login](images/gc.gitbook/assets/images/manage/cpd-login.png)
 
 ### Create a new project
 
 Go the (☰) menu and click *Projects*
 
-![(☰) Menu -> Projects](../.gitbook/assets/images/manage/cpd-projects-menu.png)
+![(☰) Menu -> Projects](images/gc.gitbook/assets/images/manage/cpd-projects-menu.png)
 
 Click on *New project*
 
-![Start a new project](../.gitbook/assets/images/manage/cpd-new-project.png)
+![Start a new project](images/gc.gitbook/assets/images/manage/cpd-new-project.png)
 
 Create a new project, choose `Analytics project`, give it a unique name, and click *OK. Click `Create` on the next screen.
 
-![Pick a name](../.gitbook/assets/images/manage/cpd-new-project-name.png)
+![Pick a name](images/gc.gitbook/assets/images/manage/cpd-new-project-name.png)
 ## 1. Add a new Data Source connection
 
 For Cloud Pak for Data to read our Db2 Warehouse data we need to add a new *Data Source* to Cloud Pak for Data. This requires inputting the usual JDBC details.
 
 To add a new data source, go to the (☰) menu and click on the *Connections* option.
 
-![(☰) Menu -> Collections](../.gitbook/assets/images/connections/cpd-conn-menu.png)
+![(☰) Menu -> Collections](images/gc.gitbook/assets/images/connections/cpd-conn-menu.png)
 
 At the overview, click *Add connection*.
 
-![Overview page](../.gitbook/assets/images/connections/conn-1-overview-empty.png)
+![Overview page](images/gc.gitbook/assets/images/connections/conn-1-overview-empty.png)
 
 Start by giving your new *Connection* a name and select *Db2 Warehouse on Cloud* as your connection type. More fields should apper. Fill the new fields with the same credentials for your own Db2 Warehouse connection from the previous section (or ask your instructor for shared credentials). Click `Test Connection` and, after that succeeds, click `Add`.
 
-![Add a Db2 Warehouse on Cloud connection](../.gitbook/assets/images/connections/conn-2-details.png)
+![Add a Db2 Warehouse on Cloud connection](images/gc.gitbook/assets/images/connections/conn-2-details.png)
 
 The new connection will be listed in the overview.
 
-![Connection has been added!](../.gitbook/assets/images/connections/conn-3-overview-db2.png)
+![Connection has been added!](images/gc.gitbook/assets/images/connections/conn-3-overview-db2.png)
 
 ## 2. Assign virtualized data
 
-> **IMPORTANT**: A note to the instructors of this tutorial. At this point go to the [Admin Guide](../admin-guide/README.md#virtualize-db2-data-with-data-virtualization) and follow the `Virtualize Db2 data with Data Virtualization` section.
+> **IMPORTANT**: A note to the instructors of this tutorial. At this point go to the [Admin Guide](images/gcadmin-guide/README.md#virtualize-db2-data-with-data-virtualization) and follow the `Virtualize Db2 data with Data Virtualization` section.
 
 For this section we'll now use the Data Virtualization tool to import the data from Db2 Warehouse, which is now exposed as an Connection in Cloud Pak for Data.
 
@@ -220,14 +220,14 @@ For this section we'll now use the Data Virtualization tool to import the data f
 
 From the menu click on *Collections -> Virtualized Data*, you'll be brought to the *My data* section. Here you should see the data that the administrator has assigned to you. Choose the three data sets available and click *Assign* to start importing it to your project.
 
-![Select the data you want to import](../.gitbook/assets/images/dv/dv-8-select-data.png)
+![Select the data you want to import](images/gc.gitbook/assets/images/dv/dv-8-select-data.png)
 
 From here, choose the project you previously created.
 
-![Assign the data to a project](../.gitbook/assets/images/dv/dv-9-assign.png)
+![Assign the data to a project](images/gc.gitbook/assets/images/dv/dv-9-assign.png)
 
 Switching to our project should show all three virtualized tables, and two joined tables. Do not go to the next section until this step is performed.
 
-![Our data sets at the end of this section](../.gitbook/assets/images/dv/dv-project-data-all.png)
+![Our data sets at the end of this section](images/gc.gitbook/assets/images/dv/dv-project-data-all.png)
 
 ## Conclusion
