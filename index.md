@@ -45,12 +45,12 @@ This tutorial is composed from the following steps:
 
 ## 1. Get the data
 
-The data that this tutorial uses to virtualize are located in a [github repository](https://github.ibm.com/Scott-DAngelo/data-virtualization-tutorial). To download you can clone the repository, use *wget* or download a *.zip* file.
+The data that this tutorial uses to virtualize are located in a [github repository](https://github.ibm.com/IBM/virtualizing-db2-warehouse-data-with-data-virtualization). To download you can clone the repository, use *wget* or download a *.zip* file.
 
 Either run the following command:
 
 ```bash
-git clone https://github.com/virtualizing-db2-warehouse-data-with-data-virtualization
+git clone https://github.com/IBM/virtualizing-db2-warehouse-data-with-data-virtualization
 cd virtualizing-db2-warehouse-data-with-data-virtualization
 ```
 or run:
@@ -279,7 +279,7 @@ You'll be notified that the join has succeeded! Click on *View my data*. to repe
 
 ![Our data sets at the end of this section](images/dv-project-data-all.png)
 
-### Assign the "Steward" role to the attendees
+### Assign the "Steward" role to the users.
 
 Go to *Data Virtualization* option from the menu. Click on *Manage users*
 
